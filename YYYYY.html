@@ -232,7 +232,7 @@
         }
         .hero-bg-img {
             position: absolute; inset: 0;
-            background: url('https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/b96e607200c729e98c53b152b5023eac192fe466.jpg') center/cover;
+            background: url('FRONT.png') center/cover;
             transform: scale(1.1);
             transition: transform 8s ease;
         }
@@ -549,102 +549,82 @@
             gap: 0.8rem; margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-        .menu-cat {
+        .menu-pill {
             padding: 0.8rem 1.8rem;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 50px;
-            color: var(--text-secondary); cursor: pointer;
+            color: var(--text-secondary);
             font-family: 'Poppins', sans-serif;
             font-size: 0.8rem; font-weight: 500;
-            transition: all 0.4s;
-            position: relative; overflow: hidden;
+            letter-spacing: 0.3px;
         }
-        .menu-cat:hover {
-            border-color: var(--lemon);
-            color: var(--lemon);
-            transform: translateY(-2px);
-        }
-        .menu-cat.active {
+        .menu-pill.active {
             background: var(--gradient-gold);
-            color: var(--black); border-color: transparent;
+            color: var(--black);
+            border-color: transparent;
             font-weight: 600;
-            transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(232,197,71,0.3);
         }
-        .menu-panel {
-            display: none;
-            animation: panelIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .menu-overview {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
         }
-        .menu-panel.active { display: block; }
-        @keyframes panelIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .menu-overview p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.9;
         }
-        .menu-grid {
+        .menu-summary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 1rem; max-width: 1200px; margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.4rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .menu-item {
-            background: var(--surface);
+        .menu-summary-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
             border: 1px solid var(--border);
-            border-radius: 14px; padding: 1.3rem;
-            display: flex; justify-content: space-between;
-            align-items: flex-start; gap: 1rem;
-            transition: all 0.4s;
-            position: relative; overflow: hidden;
+            border-radius: 22px;
+            overflow: hidden;
+            transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
         }
-        .menu-item::after {
-            content: ''; position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            transition: left 0.7s;
-        }
-        .menu-item:hover::after { left: 100%; }
-        .menu-item:hover {
+        .menu-summary-card:hover {
+            transform: translateY(-6px);
             border-color: var(--border-hover);
-            transform: translateX(6px);
-            background: var(--surface-hover);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.28);
         }
-        .menu-item-info h4 {
-            font-size: 1rem; margin-bottom: 0.2rem;
-            color: var(--text-primary); font-weight: 600;
-        }
-        .menu-item-info p { font-size: 0.8rem; color: var(--text-tertiary); }
-        .menu-item-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem; color: var(--lemon);
-            font-weight: 700; white-space: nowrap;
-        }
-        .menu-cat-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; color: var(--gold);
-            margin: 1.5rem 0 0.8rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            grid-column: 1 / -1;
-        }
-        .menu-cat-img {
-            grid-column: 1 / -1;
-            height: 280px; border-radius: 20px;
-            overflow: hidden; margin-bottom: 1rem;
+        .menu-summary-media {
+            height: 220px;
             position: relative;
-            border: 1px solid var(--border);
+            overflow: hidden;
         }
-        .menu-cat-img img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.8s;
+        .menu-summary-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
         }
-        .menu-cat-img:hover img { transform: scale(1.05); }
-        .menu-cat-img::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(2,2,2,0.8) 0%, transparent 50%);
+        .menu-summary-card:hover .menu-summary-media img { transform: scale(1.06); }
+        .menu-summary-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2,2,2,0.8) 0%, rgba(2,2,2,0.15) 55%, transparent 100%);
         }
-        .menu-cat-img span {
-            position: absolute; bottom: 1.5rem; left: 1.5rem;
-            z-index: 2; font-family: 'Playfair Display', serif;
-            font-size: 2rem; color: #fff;
+        .menu-summary-body {
+            padding: 1.6rem;
+        }
+        .menu-summary-body h3 {
+            font-size: 1.45rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .menu-summary-body p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.8;
         }
 
         /* ========== WHY US ========== */
@@ -851,6 +831,17 @@
             transform: translateY(-4px) rotate(360deg);
             box-shadow: var(--shadow-gold);
         }
+        .social-links a[aria-disabled="true"] {
+            opacity: 0.65;
+            cursor: default;
+        }
+        .social-links a[aria-disabled="true"]:hover {
+            background: var(--surface);
+            color: var(--text-secondary);
+            border-color: var(--border);
+            transform: none;
+            box-shadow: none;
+        }
         .contact-form {
             background: var(--black-card);
             border: 1px solid var(--border);
@@ -883,6 +874,12 @@
         }
         .form-group textarea { resize: vertical; min-height: 100px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-status {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
 
         /* ========== FOOTER ========== */
         footer {
@@ -996,7 +993,7 @@
             .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; }
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .form-row { grid-template-columns: 1fr; }
-            .menu-grid { grid-template-columns: 1fr; }
+            .menu-summary-grid { grid-template-columns: 1fr; }
             .hero-actions { flex-direction: column; align-items: center; }
             .btn { width: 100%; max-width: 280px; justify-content: center; cursor: pointer; }
             body { cursor: auto; }
@@ -1022,7 +1019,7 @@
 
     <!-- Nav -->
     <nav id="navbar">
-        <a href="#" class="logo"><i class="fas fa-lemon"></i> The Lemon <span>Bowl</span></a>
+        <a href="#home" class="logo"><i class="fas fa-lemon"></i> The Lemon <span>Bowl</span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1156,230 +1153,74 @@
             <div class="section-tag">Discover</div>
             <h2 class="section-title">Our <span>Menu</span></h2>
             <div class="gold-line"></div>
-            <p class="section-desc" style="margin:0 auto">Explore our signature dishes and curated platters</p>
+            <p class="section-desc" style="margin:0 auto">A simple look at the cuisines and platter experiences we serve</p>
         </div>
         <div class="menu-categories reveal">
-            <button class="menu-cat active" onclick="showMenu('chaat', this)">Chaat Platters</button>
-            <button class="menu-cat" onclick="showMenu('appetizers', this)">Appetizers</button>
-            <button class="menu-cat" onclick="showMenu('indian', this)">Indian Main Course</button>
-            <button class="menu-cat" onclick="showMenu('global', this)">Global Cuisine</button>
-            <button class="menu-cat" onclick="showMenu('bbq', this)">BBQ & Grill</button>
-            <button class="menu-cat" onclick="showMenu('desserts', this)">Desserts</button>
+            <span class="menu-pill">Chaat Platters</span>
+            <span class="menu-pill">Appetizers</span>
+            <span class="menu-pill active">Indian Main Course</span>
+            <span class="menu-pill">Global Cuisine</span>
+            <span class="menu-pill">BBQ & Grill</span>
+            <span class="menu-pill">Desserts</span>
         </div>
-
-        <!-- Chaat -->
-        <div id="chaat" class="menu-panel active">
-            <div class="menu-grid">
-                <div class="menu-cat-img">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/45ab12e9261164b2ae78d5f1a1cf45b89e3abd55.jpg" alt="Indian Thali">
-                    <span>Chaat Platters</span>
-                </div>
-                <div>
-                    <div class="menu-cat-title">Khomcha</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Dilli se Matra Kachori</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Indore se Dal Pakwan</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Khasta Kachori & Aloo ki Sabzi</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Handi Matra Kulcha</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Moradabadi Dal & Biscotti</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Samosa & Chole</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Ragda with Mini Samosa, Kachori & Pattice</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Raj Kachori</h4><p>6 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Palak Patta Chaat</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Dal Bom</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Bhutte Ka Kees</h4><p>Serves 4–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Banaras se Tamatar ki Chaat</h4><p>Serves 6–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Dahi Bhalla</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Dilli se Ram Laddu</h4><p>16 pcs Laddu & 8 pcs Mirch</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Kutchi Dabeli</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Samosa with Chutney</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Surat se Surti Sev Khamani</h4><p>Serves 4–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Jodhpur se Mirchi Vada</h4><p>16 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Aloo Chaat</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Shakarkandi Chaat</h4><p>Serves 4–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Lucknowi Matar ki Tikki</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                </div>
-                <div>
-                    <div class="menu-cat-title">Chaat Ka Thela</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Golgappa, Khasta Kachori Aloo Sabzi, Dahi Bhalla, Vada Pav, Shakarkandi Chaat, Surti Sev Khamani, Masala Shikanji</h4><p>Serves 6</p></div><div class="menu-item-price">₹5,100</div></div>
-                    <div class="menu-cat-title">Kolkata Se Chaat</div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Club Kachori Aloo Sabzi</h4><p>30 pcs</p></div><div class="menu-item-price">₹1,500</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Jhal Muri</h4><p>Serves 4–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Churmur Chaat</h4><p>Serves 4–8</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-cat-title">Mumbai Se Chaat</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mini Dabeli</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Mini Vada Pav</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Vada Pav</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Bhel Puri</h4><p>Serves 6–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Sev Puri</h4><p>Serves 6–8</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Pav Bhaji</h4><p>6 pavs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-cat-title">Khomcha in Jars</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Surti Sev Khamani Jars</h4><p>6 jars</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Dahi Bhalla Jars</h4><p>6 jars</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Sabudana Chaat in Jars</h4><p>6 jars</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Pav Bhaji Jars</h4><p>6 jars</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-cat-title">Golgappas & Puchkas</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Golgappa</h4><p>30 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Kolkata Puchka</h4><p>30 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Ragda Pani Puri</h4><p>30 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Golgappa Station</h4><p>60 golgappas</p></div><div class="menu-item-price">₹2,500</div></div>
-                    <div class="menu-cat-title">Fusion Chaat</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Lotus Stem Bhel DIY</h4><p>Serves 6–8</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Bhel Puri Tarts DIY</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Chaat Cornetts DIY</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Pineapple Bhel Puri DIY</h4><p>Serves 6–8</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Schezwan Vada Pav</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Avocado Papdi Chaat DIY</h4><p>20 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mexican Style Golgappa</h4><p>20 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Thai Curry Golgappa</h4><p>20 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mexican Papdi Chaat</h4><p>20 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Ravioli with Banarasi Tamatar Chaat in Jars</h4><p>8 pcs</p></div><div class="menu-item-price">₹2,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Taco Chaat</h4><p>8 shells</p></div><div class="menu-item-price">₹1,600</div></div>
-                </div>
-            </div>
+        <div class="menu-overview reveal reveal-d1">
+            <p>Our food is designed around celebrations, sharing, and elegant presentation. From lively Indian favorites to refined global platters, we curate menus that feel festive, generous, and beautifully styled for every gathering.</p>
         </div>
-
-        <!-- Appetizers -->
-        <div id="appetizers" class="menu-panel">
-            <div class="menu-grid">
-                <div class="menu-cat-img">
+        <div class="menu-summary-grid">
+            <article class="menu-summary-card reveal">
+                <div class="menu-summary-media">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/45ab12e9261164b2ae78d5f1a1cf45b89e3abd55.jpg" alt="Chaat Platters">
+                </div>
+                <div class="menu-summary-body">
+                    <h3>Chaat Platters</h3>
+                    <p>Colorful, nostalgic street-style flavors served with vibrant chutneys, layered textures, and a playful presentation that always energizes the table.</p>
+                </div>
+            </article>
+            <article class="menu-summary-card reveal reveal-d1">
+                <div class="menu-summary-media">
                     <img src="https://kimi-web-img.moonshot.cn/img/t4.ftcdn.net/e5424983f95205c742f863dabd8202312d4f245c.jpg" alt="Appetizers">
-                    <span>Appetizers</span>
                 </div>
-                <div>
-                    <div class="menu-cat-title">Indian Appetizers</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mini Vada Pav</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Mini Dabeli</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Paneer Makhni Puffs with Mint Feta Mousse</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Choti Dal ki Kachori</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Chatpata Corn Ribs with Garlic Pepper Chutney</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Methi Malai Broccoli Vol-au-vents</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Dabeli Bruschetta DIY</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Mini Chaat Cornets DIY</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Crispy Lotus Stem DIY</h4><p>Serves 4</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Stacked Mini Podi Idli with Coconut Chutney</h4><p>10 skewers</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Vegetable Cutlet</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Paneer Paturi</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Truffle Galouti Sliders</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Achari Paneer Tacos</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Sweet Potato Triangle Samosa</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-cat-title">Tandoori Platter</div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Malai Broccoli, Paneer Tikka, Roasted Masala Potato, Spiced Mushroom, Chilli Pineapples, Roasted Tomato, Capsicum & Onion</h4><p>Serves 6</p></div><div class="menu-item-price">₹2,400</div></div>
-                    <div class="menu-cat-title">Kababs Rang Tarang</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Assorted Kababs with Ulte Tawa Paratha, Dal Makhni, Assorted Breads, Hari Chutney, Dahi ki Chutney & Pyaaz</h4><p>Serves 4–6</p></div><div class="menu-item-price">₹4,000</div></div>
+                <div class="menu-summary-body">
+                    <h3>Appetizers</h3>
+                    <p>Elegant bite-sized starters crafted for mingling, welcome tables, and cocktail-style service with a balance of comfort and sophistication.</p>
                 </div>
-                <div>
-                    <div class="menu-cat-title">Kababs</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Rajma Galouti Kabab with Ulte Tawa Paratha</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Walnut Mushroom Tikki</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Paneer Tikka</h4><p>8 skewers</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Bharwa Aloo</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Beetroot Peanut ke Kabab</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Veg Seekh Kabab</h4><p>8 skewers</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Dahi Ke Kabab</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-cat-title">Mexican</div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Fajita Bites</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Crispy Mini Tacos DIY</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Potato Pumpkin Empanadas</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mini Blackbean Corn Cheddar Quesadillas</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Let's Nacho</h4><p>Serves 4</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Herbed Churros with Spiced Queso</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Spicy Sweet Potato Avocado Soft Taco</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,600</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Jackfruit Blackbean Corn Soft Taco</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,600</div></div>
-                    <div class="menu-cat-title">Asian</div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Vegetable Spring Rolls</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Chilli Garlic Edamame</h4><p>Serves 4–6</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Vietnamese Summer Rolls</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Broccoli Tofu Satay with Peanut Sauce on Skewers</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Balsamic Glazed Cheese Stuffed Mushroom</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Honey Chilli Potato</h4><p>Serves 4</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Stir Fried Crispy Lotus Stem</h4><p>Serves 4</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-cat-title">Sushi | Dimsums | Bao</div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Classic Vegetable Momos</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Bokchoy Mushroom Dimsums</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Vegetable Waterchestnut Dimsums</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Creamcheese Corn Chives Dimsums</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Avocado & Cucumber Cream Cheese Sushi</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Zucchini, Carrot, Pickle Sushi</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Tempura Sushi</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,200</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Sticky Mushroom Gua Bao</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,600</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Hoisin Vegetable Bao</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,600</div></div>
-                    <div class="menu-cat-title">Italian</div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Ricotta Walnut Stuffed Zucchini Rollups</h4><p>12 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Spinach Mushroom Puffs</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Pesto Ricotta Caramelised Onion Puffs</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Mushroom & Cheese Tarts</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Sundried Tomato Olive Tapenade Crostinis</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Baked Feta with Olives & Crostinis</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Pizza Bites</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Aranchini Balls with Tomato Aioli</h4><p>10 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Spaghetti Balls with Marinara Dip</h4><p>8 pcs</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal"><div class="menu-item-info"><h4>Herbed Baby Potatoes with Whipped Goat Cheese</h4><p>Serves 4–6</p></div><div class="menu-item-price">₹1,000</div></div>
-                    <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Parmesan Roasted Babycarrots & Brussels with Pesto Dip</h4><p>Serves 4–6</p></div><div class="menu-item-price">₹1,200</div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Indian Main Course -->
-        <div id="indian" class="menu-panel">
-            <div class="menu-grid" style="max-width:800px;">
-                <div class="menu-cat-img">
+            </article>
+            <article class="menu-summary-card reveal reveal-d2">
+                <div class="menu-summary-media">
                     <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/2873ed8673bdac95077cc8cbac7440d0e658439d.jpg" alt="Indian Main Course">
-                    <span>Indian Main Course</span>
                 </div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Dal Makhani</h4><p>Creamy black lentils simmered overnight</p></div><div class="menu-item-price">₹800</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Paneer Butter Masala</h4><p>Soft paneer in rich tomato gravy</p></div><div class="menu-item-price">₹900</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Veg Biryani</h4><p>Fragrant basmati rice with seasonal vegetables</p></div><div class="menu-item-price">₹750</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Palak Paneer</h4><p>Cottage cheese in spiced spinach puree</p></div><div class="menu-item-price">₹850</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Chole Bhature</h4><p>Classic Punjabi chickpea curry with fried bread</p></div><div class="menu-item-price">₹700</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Malai Kofta</h4><p>Paneer and potato dumplings in creamy gravy</p></div><div class="menu-item-price">₹900</div></div>
-            </div>
-        </div>
-
-        <!-- Global Cuisine -->
-        <div id="global" class="menu-panel">
-            <div class="menu-grid" style="max-width:800px;">
-                <div class="menu-cat-img">
+                <div class="menu-summary-body">
+                    <h3>Indian Main Course</h3>
+                    <p>Rich regional classics and comforting favorites prepared with depth, warmth, and the kind of presentation that feels special for family-style celebrations.</p>
+                </div>
+            </article>
+            <article class="menu-summary-card reveal">
+                <div class="menu-summary-media">
                     <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/4a0d214fbdbeb97ded3d2e41eda3f9b076a3e75e.jpg" alt="Global Cuisine">
-                    <span>Global Cuisine</span>
                 </div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Thai Green Curry</h4><p>With jasmine rice and vegetables</p></div><div class="menu-item-price">₹950</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Penne Arrabbiata</h4><p>Spicy tomato sauce with fresh basil</p></div><div class="menu-item-price">₹850</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Vegetable Lasagna</h4><p>Layered pasta with ricotta and spinach</p></div><div class="menu-item-price">₹900</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Teriyaki Tofu Bowl</h4><p>With steamed rice and edamame</p></div><div class="menu-item-price">₹880</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Mexican Burrito Bowl</h4><p>Black beans, salsa, guacamole, rice</p></div><div class="menu-item-price">₹850</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Mediterranean Mezze Platter</h4><p>Hummus, falafel, pita, olives, tzatziki</p></div><div class="menu-item-price">₹1,100</div></div>
-            </div>
-        </div>
-
-        <!-- BBQ & Grill -->
-        <div id="bbq" class="menu-panel">
-            <div class="menu-grid" style="max-width:800px;">
-                <div class="menu-cat-img">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/a31bde1c2124bcf085f430bb5b86f9e7d2f32878.jpg" alt="BBQ & Grill">
-                    <span>BBQ & Grill</span>
+                <div class="menu-summary-body">
+                    <h3>Global Cuisine</h3>
+                    <p>International flavors interpreted with a gourmet touch, bringing Mediterranean, Asian, Italian, and modern fusion influences into one polished spread.</p>
                 </div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Tandoori Platter</h4><p>Assorted veg tandoori items with dips</p></div><div class="menu-item-price">₹2,400</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Paneer Tikka</h4><p>8 skewers of marinated cottage cheese</p></div><div class="menu-item-price">₹1,200</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Veg Seekh Kabab</h4><p>8 skewers of minced vegetable kebabs</p></div><div class="menu-item-price">₹1,000</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Grilled Vegetable Skewers</h4><p>With herb butter and chimichurri</p></div><div class="menu-item-price">₹950</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>BBQ Corn Ribs</h4><p>With garlic pepper chutney</p></div><div class="menu-item-price">₹1,000</div></div>
-            </div>
-        </div>
-
-        <!-- Desserts -->
-        <div id="desserts" class="menu-panel">
-            <div class="menu-grid" style="max-width:800px;">
-                <div class="menu-cat-img">
+            </article>
+            <article class="menu-summary-card reveal reveal-d1">
+                <div class="menu-summary-media">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/a31bde1c2124bcf085f430bb5b86f9e7d2f32878.jpg" alt="BBQ and Grill">
+                </div>
+                <div class="menu-summary-body">
+                    <h3>BBQ & Grill</h3>
+                    <p>Smoky grills, tandoor-inspired selections, and bold savory flavors that add a hearty, interactive element to parties and outdoor gatherings.</p>
+                </div>
+            </article>
+            <article class="menu-summary-card reveal reveal-d2">
+                <div class="menu-summary-media">
                     <img src="https://kimi-web-img.moonshot.cn/img/media-api.xogrp.com/a8c164facba3daa37cb5b03a0d957f707a1bb4ca.750" alt="Desserts">
-                    <span>Desserts</span>
                 </div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Royal Indian Dessert Platter</h4><p>Assorted traditional sweets</p></div><div class="menu-item-price">₹1,500</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Gulab Jamun</h4><p>12 pcs of warm rose-scented dumplings</p></div><div class="menu-item-price">₹600</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Rasmalai</h4><p>8 pcs of saffron milk cakes</p></div><div class="menu-item-price">₹700</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Chocolate Mousse</h4><p>Rich dark chocolate with whipped cream</p></div><div class="menu-item-price">₹550</div></div>
-                <div class="menu-item reveal"><div class="menu-item-info"><h4>Tiramisu Jars</h4><p>6 jars of classic Italian dessert</p></div><div class="menu-item-price">₹900</div></div>
-                <div class="menu-item reveal reveal-d1"><div class="menu-item-info"><h4>Fruit Trifle</h4><p>Layers of custard, cake, and fresh fruits</p></div><div class="menu-item-price">₹800</div></div>
-            </div>
+                <div class="menu-summary-body">
+                    <h3>Desserts</h3>
+                    <p>Decadent sweet endings that blend classic indulgence with graceful styling, perfect for gifting, celebrations, and memorable dessert tables.</p>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -1525,16 +1366,16 @@
                     <i class="fas fa-clock"></i>
                     <div><strong>Hours</strong><span>Mon - Sun: 10:00 AM - 10:00 PM</span></div>
                 </div>
-                <a href="https://wa.me/919711971606" class="whatsapp-btn magnetic" target="_blank"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+                <a href="https://wa.me/919711971606" class="whatsapp-btn magnetic" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram" aria-disabled="true" title="Instagram link coming soon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook" aria-disabled="true" title="Facebook link coming soon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter" aria-disabled="true" title="Twitter link coming soon"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="contact-form reveal reveal-d1">
                 <h3 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem;color:var(--text-primary);font-size:1.4rem;">Book Your Event</h3>
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="contactForm" action="" method="POST" data-recipient="hello@thelemonbowl.in">
                     <div class="form-row">
                         <div class="form-group"><label>First Name</label><input type="text" name="firstname" placeholder="John" required></div>
                         <div class="form-group"><label>Last Name</label><input type="text" name="lastname" placeholder="Doe" required></div>
@@ -1548,6 +1389,7 @@
                     <div class="form-group"><label>Event Type</label><select name="event_type" required><option value="">Select Event Type</option><option>Birthday Party</option><option>Corporate Event</option><option>Wedding / Reception</option><option>Housewarming</option><option>Other</option></select></div>
                     <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your event..."></textarea></div>
                     <button type="submit" class="btn btn-gold magnetic" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Send Inquiry</button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>
@@ -1557,12 +1399,12 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="#" class="logo"><i class="fas fa-lemon"></i> The Lemon <span>Bowl</span></a>
+                <a href="#home" class="logo"><i class="fas fa-lemon"></i> The Lemon <span>Bowl</span></a>
                 <p>Luxury platters and bespoke catering experiences in Gurugram & Delhi NCR. Crafted with passion, served with elegance.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram" aria-disabled="true" title="Instagram link coming soon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook" aria-disabled="true" title="Facebook link coming soon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter" aria-disabled="true" title="Twitter link coming soon"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -1604,7 +1446,7 @@
         }
         loopCursor();
 
-        document.querySelectorAll('a, button, .menu-cat, .gallery-item, .service-card, .feature-card, .testimonial-card, .contact-item, .about-hl').forEach(el => {
+        document.querySelectorAll('a, button, .menu-pill, .menu-summary-card, .gallery-item, .service-card, .feature-card, .testimonial-card, .contact-item, .about-hl').forEach(el => {
             el.addEventListener('mouseenter', () => ring.classList.add('hover'));
             el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
         });
@@ -1727,21 +1569,6 @@
             heroTitle.appendChild(s);
         });
 
-        // ========== MENU TABS ==========
-        function showMenu(cat, btn) {
-            document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.menu-cat').forEach(b => b.classList.remove('active'));
-            document.getElementById(cat).classList.add('active');
-            btn.classList.add('active');
-            setTimeout(() => {
-                document.querySelectorAll('.menu-panel.active .reveal').forEach(el => {
-                    el.classList.remove('active');
-                    void el.offsetWidth;
-                    el.classList.add('active');
-                });
-            }, 50);
-        }
-
         // ========== SCROLL REVEAL ==========
         const revealObs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
@@ -1773,11 +1600,48 @@
         // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') {
+                    e.preventDefault();
+                    return;
+                }
+                const t = document.querySelector(href);
+                if (!t) return;
                 e.preventDefault();
-                const t = document.querySelector(this.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+        // ========== STATIC FORM FALLBACK ==========
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = new FormData(contactForm);
+                const eventType = data.get('event_type') || 'Event Inquiry';
+                const recipient = contactForm.dataset.recipient || 'hello@thelemonbowl.in';
+                const body = [
+                    'Hello The Lemon Bowl,',
+                    '',
+                    'I would like to book an event. Here are my details:',
+                    '',
+                    `Name: ${data.get('firstname') || ''} ${data.get('lastname') || ''}`.trim(),
+                    `Email: ${data.get('email') || ''}`,
+                    `Phone: ${data.get('phone') || ''}`,
+                    `Event date: ${data.get('date') || ''}`,
+                    `Guests: ${data.get('guests') || ''}`,
+                    `Event type: ${eventType}`,
+                    `Message: ${data.get('message') || 'No additional details provided.'}`
+                ].join('\n');
+
+                if (formStatus) {
+                    formStatus.textContent = 'Opening your email app with a pre-filled inquiry.';
+                }
+
+                window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(`Event Inquiry - ${eventType}`)}&body=${encodeURIComponent(body)}`;
+            });
+        }
 
         // ========== TEXT SCRAMBLE ON NAV HOVER ==========
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
